@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% load static %}{%block content%}
+
+
+
+<nav class="navbar sticky-top navbar-light bg-dark">
+    <center>
+        <h3 class="text-primary"> Welcome
+            <span class="text-danger">{{user.first_name}}</span></h3>
+    </center>
+
+    <a href="logout">
+        <button type="button" class="btn btn-danger ">Logout</button>
+    </a>
+</nav>
+
+
+
+<div class="container">
+</div>
+<div class="row row-cols-2 g-2 mt-5 pt-3">
+    <div class="col-sm-4">
+        <div class="card">
+            <img src="{% static 'images/Rick and Morty v2.png'%}" alt="a snow-capped mountain range" />
+            <div class="card-body">
+                <h2 class="card-title">Mountains</h2>
+                <p class="card-text">This is a photo of snow-covered mountains. How majestic.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <img src="https://assets.codepen.io/6093409/mountains-4.jpg" alt="a snowy mountain with clouds behind it" />
+            <div class="card-body">
+                <h2 class="card-title">Mountains</h2>
+                <p class="card-text">This is a photo of snow-covered mountains. How majestic.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <img src="https://assets.codepen.io/6093409/mountains-3.jpg" alt="a mountain range under a thin layer of clouds" />
+            <div class="card-body">
+                <h2 class="card-title">Mountains</h2>
+                <p class="card-text">This is a photo of snow-covered mountains. How majestic.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 p-3 mt-3">
+        <div class="card">
+            <img src="https://assets.codepen.io/6093409/mountains-5.jpg" alt="a forested mountain range" />
+            <div class="card-body">
+                <h2 class="card-title">Mountains</h2>
+                <p class="card-text">This is a photo of snow-covered mountains. How majestic.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{%endblock%}
