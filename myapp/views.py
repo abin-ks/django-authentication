@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .models import *
 # Create your views here.
 
 def index(request):
@@ -62,3 +63,17 @@ def gallery(request):
 def logout(request):
     auth.logout(request)
     return redirect('index')
+
+def reg(request):
+    return render(request, 'reg.html')
+
+def imageregister(request):
+    if request.method == 'POST':
+        image = request.FILES['image']
+        upload = Upload_image(image=image)
+        upload.save()
+        return redirect('reg')
+    
+def imageshow(request):
+    empty = Upload_image.objects.all()
+    return render(request, 'imageshow.html', {'empty':empty})

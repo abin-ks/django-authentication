@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container">
+
+    {% for i in empty %}
+    <img src="{{i.image.url}}" height="250" width="250" alt="">
+
+    <a href="">
+        <button type="submit" class="btn btn-primary">
+        Delete
+    </button></a>
+    <a href="">
+        <button type="submit" class="btn btn-primary">
+        Edit
+    </button></a>{% endfor %}
+
+</div> {% endblock content %}
