@@ -77,3 +77,65 @@ def imageregister(request):
 def imageshow(request):
     empty = Upload_image.objects.all()
     return render(request, 'imageshow.html', {'empty':empty})
+
+
+def profile(request):
+    return render(request, 'profile.html')
+
+def profilesave(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        images = request.FILES['images']
+        mobile = request.POST['mobile']
+        address = request.POST['address']
+        pro =  Profile_card(name=name, email=email, images=images )
+        pro.save()
+        
+        pr = Pr_card(mobile=mobile, address=address, userid = pro)
+        pr.save()
+        return redirect('profileshow')
+    else:
+        return redirect('profile')
+    
+def profileshow(request):
+    show = Pr_card.objects.all()
+    return render(request, 'profileshow.html',{'show': show})
+
+def profileedit(request,userid):
+    pro = Profile_card.objects.get(userid = userid)
+    show = Pr_card.objects.get(userid=pro)
+    return render(request, 'profileedit.html', {'show':show})
+
+def profileupdate(request,userid):
+    if request.method == 'POST':
+        pro = Profile_card.objects.get(userid = userid)
+        pro.name = request.POST.get('name',pro.name)
+        pro.email = request.POST.get('email',pro.email)
+        pro.images = request.FILES['images']
+        pro.save()
+        show = Pr_card.objects.get(userid = pro)
+        show.mobile = request.POST.get('mobile',show.mobile)
+        show.address = request.POST.get('address',show.address)
+        show.save()
+        
+        return redirect('profileshow')
+    
+    
+def name(request):
+    qwer = Profile_card.objects.all()
+    try:
+        name = request.POST['name']
+        email=request.POST['email']
+    
+        if Profile_card.objects.filter(name=name).exists():
+            qwer  =   Profile_card.objects.filter(name=name)
+        elif Profile_card.objects.filter(email=email).exists():
+            qwer  =   Profile_card.objects.filter(email=email)  
+        elif Profile_card.objects.filter(name=name,email=email).exists():
+            qwer = Profile_card.objects.filter(name=name,email=email)
+    except:
+        
+        pass
+    
+    return render(request, 'name.html',{'qwer':qwer})

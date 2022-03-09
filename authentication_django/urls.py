@@ -30,6 +30,12 @@ urlpatterns = [
     path('reg', views.reg, name='reg'),
     path('imageregister', views.imageregister, name='imageregister'),
     path('imageshow', views.imageshow, name='imageshow'),
+    path('profile', views.profile, name='profile'),
+    path('profilesave', views.profilesave, name='profilesave'),
+    path('profileshow', views.profileshow, name='profileshow'),
+    path('profileedit/<int:userid>', views.profileedit, name='profileedit'),
+    path('profileupdate/<int:userid>', views.profileupdate, name='profileupdate'),
+    path('name', views.name, name='name'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

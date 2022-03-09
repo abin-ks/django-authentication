@@ -1,0 +1,56 @@
+{% extends 'base.html' %}{%block content%}
+<div class="card mb-3">
+    <div class="card-body">
+        <form action="name" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Full Name</h6>
+                </div>
+                <div class="col-sm-9 ">
+                    <input type="text" name="name" class="form-control">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                </div>
+                <div class="col-sm-9 ">
+                    <input type="email" name="email" class="form-control">
+                </div>
+            </div>
+            <hr>
+
+            <div class="row ">
+                <div class="col-sm-12 ">
+                    <button type="submit" class="btn btn-outline-primary w-100">submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for i in qwer %}
+
+            <tr>
+                <td>{{i.userid}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{%endblock%}
